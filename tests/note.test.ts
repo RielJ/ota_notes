@@ -82,4 +82,11 @@ describe('Test the root path', () => {
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual({ error: 'Note not found' })
   })
+
+  // Test GET /notes/:id invalid ID
+  test('Test GET /notes/:id invalid ID', async () => {
+    const response = await supertest(app).get(`/notes/asdasd`)
+    expect(response.statusCode).toBe(500)
+    expect(response.body).toEqual({ error: 'Invalid ID' })
+  })
 })
