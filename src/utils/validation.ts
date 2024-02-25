@@ -1,5 +1,5 @@
 export const validateTitle = (title: string) => {
-  if (title === '') {
+  if (!title) {
     throw new Error('Title is required')
   }
   if (title.length > 100) {
@@ -8,7 +8,7 @@ export const validateTitle = (title: string) => {
 }
 
 export const validateBody = (body: string) => {
-  if (body === '') {
+  if (!body) {
     throw new Error('Body is required')
   }
   if (body.length > 1000) {

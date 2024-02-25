@@ -89,4 +89,35 @@ describe('Test the root path', () => {
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual({ error: 'Invalid ID' })
   })
+
+  // Test POST /notes invalid body
+  test('Test POST /notes invalid body', async () => {
+    const response = await supertest(app).post('/notes').send({
+      title: 'Test Title',
+    })
+    expect(response.statusCode).toBe(500)
+    expect(response.body).toEqual({ error: 'Body is required' })
+  })
+
+  // Test POST /notes title exceeds 100 characters
+  test('Test POST /notes title exceeds 100 characters', async () => {
+    const response = await supertest(app)
+      .post('/notes')
+      .send({
+        title: `
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac
+        condimentum libero. In hac habitasse platea dictumst. Phasellus
+        fermentum, nunc in fermentum fermentum, purus libero fermentum
+        sapien, eget fermentum libero libero fermentum libero fermentum
+        fermentum fermentum fermentum fermentum fermentum fermentum
+        fermentum fermentum fermentum fermentum fermentum fermentum
+        fermentum fermentum fermentum fermentum fermentum fermentum
+        fermentum fermentum fermentum fermentum fermentum fermentum
+        `,
+        body: 'Test Body',
+      })
+
+    expect(response.statusCode).toBe(500)
+    expect(response.body).toEqual({ error: 'Title is too long' })
+  })
 })
