@@ -7,9 +7,11 @@ This is a simple note taking application API. It is built using Express + Typesc
 ### Prerequisites
 
 - Node.js v20.0.0 or higher
-- pnpm
+- pnpm/yarn/npm
 
 ### Installation
+
+Replace `pnpm` with `yarn` or `npm` if you don't have `pnpm` installed.
 
 ```bash
 pnpm install
