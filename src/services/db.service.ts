@@ -1,13 +1,24 @@
-import { dbConfig } from "@/config";
-import { Database } from "sqlite3";
+import { dbConfig } from '@/config'
+import { open } from 'sqlite'
+import { cached } from 'sqlite3'
 
-// Open a SQLite database, stored in the file db.sqlite
-const db = new Database(dbConfig.filename, (err) => {
-  if (err) {
-    console.error(err.message);
-  } else {
-    console.log("Connected to the SQLite database.");
-  }
-});
+export const openDB = async () => {
+  const db = await open({
+    filename: dbConfig.filename,
+    driver: cached.Database,
+  })
 
-export default db;
+  return db
+}
+
+export const initDB = async () => {
+  const db = await openDB()
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS notes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT,
+      body TEXT
+    )
+  `)
+  return db
+}

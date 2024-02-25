@@ -1,1 +1,1 @@
-export * from './noteRoutes'
+export * from './note.routes'
