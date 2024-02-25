@@ -23,7 +23,7 @@ export const NoteController = {
     validateTitle(title)
     validateBody(body)
     const note = await Note.updateNote({
-      id,
+      id: Number(id),
       title,
       body,
     })

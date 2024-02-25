@@ -1,5 +1,5 @@
 export type NoteType = {
-  id: string
+  id: number
   title: string
   body: string
 }

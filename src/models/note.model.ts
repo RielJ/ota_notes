@@ -1,5 +1,3 @@
-// Note Model Sqlite3
-
 import { openDB } from '@/services/db.service'
 import { NoteType } from '@/types'
 
@@ -9,7 +7,7 @@ type ICreateNote = {
 }
 
 type IUpdateNote = {
-  id: string
+  id: number
   title: string
   body: string
 }
@@ -49,7 +47,7 @@ export const Note = {
         body
       )
       return {
-        id: result.lastID?.toString() || '0',
+        id: result.lastID ?? 0,
         title,
         body,
       }

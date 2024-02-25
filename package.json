@@ -4,7 +4,7 @@
   "description": "A RESTful API that allows users to create, retrieve, update, and delete notes. Each note can consist of a title and a body.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon src/index.ts",
     "watch": "tsc --watch"
   },
@@ -18,8 +18,16 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.11.20",
+    "@types/supertest": "^6.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.0",
+    "superagent": "^8.1.2",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.7.1",
